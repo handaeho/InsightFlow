@@ -59,6 +59,20 @@ services:
       - minio_data:/data
     networks:
       - insightflow-net
+  
+  # 5. RabbitMQ (Message Broker)
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: insightflow-rabbitmq
+    restart: always
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    ports:
+      - "5672:5672"   # AMQP 포트 (애플리케이션 연결용)
+      - "15672:15672" # Management UI 포트 (웹 관리자용)
+    networks:
+      - insightflow-net
 
 networks:
   insightflow-net:
