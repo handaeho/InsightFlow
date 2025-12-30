@@ -11,8 +11,6 @@ InsightFlow gRPC Ingestion Server
 
 데이터 흐름:
     Client -> [gRPC Stream] -> Local Disk Save -> MariaDB Insert -> ChromaDB Embedding -> Ready to Search
-
-    qweeeeeeeeeeeeeeeeeeeeeeeee
 """
 
 import asyncio
