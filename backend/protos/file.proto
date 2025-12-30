@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+// 패키지명
+package file;
+
+// 서비스 정의
+service FileService {
+    // stream FileChunk: 파일 청크 스트리밍 설정
+    rpc UploadFile (stream FileChunk) returns (UploadStatus) {}
+}
+
+// 메시지 정의
+message FileChunk {
+    // oneof: 하나의 필드만 활성화 
+    // 첫번째 FileChunk는 메타데이터만 활성화, 이후 FileChunk는 실제 내용만 활성화
+    oneof data {
+        FileInfo info = 1;      // 메타데이터(파일명, 타입 등)
+        bytes chunk_data = 2;   // 실제 파일 내용(바이너리)
+    }
+}
+
+message FileInfo {
+    string filename = 1;
+    string file_type = 2;
+}
+
+message UploadStatus {
+    bool success = 1;
+    string message = 2;
+    string file_id = 3;
+}

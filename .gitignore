@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets files
+.env
+
+# etc files
+.cursorrules
+.cursor/
+project_guide.md
+insightflow_advanced_roadmap.xml
